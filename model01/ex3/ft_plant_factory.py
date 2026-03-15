@@ -25,7 +25,7 @@ def main():
         {"name": "Sunflower", "height": 80, "age": 45},
         {"name": "Fern", "height": 15, "age": 120},
     ]
-    plants = [Plant(**d)for d in data]
+    plants = [Plant(**d) for d in data]
     print("=== Plant Factory Output ===")
     for plant in plants:
         print("Created: ")

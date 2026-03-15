@@ -1,13 +1,15 @@
-class secure_plant():
+class secure_plant:
     def __init__(self, name: str, height: int, age: int):
         self._name = name
         print(f"Plant created: {self._name}")
         self._height = 0
         self._age = 0
-    
+
     def set_heigth(self, heigth_set: int):
         if heigth_set < 0:
-            print(f"Invalid operation attempted: height {heigth_set}m [REJECTED]")
+            print(
+                f"Invalid operation attempted: height {heigth_set}m [REJECTED]"
+            )
             print("Security: Negative height rejected")
         else:
             self._height = heigth_set
@@ -23,13 +25,16 @@ class secure_plant():
 
     def get_heigth(self):
         return self._height
-    
+
     def get_age(self):
         return self._age
-    
+
     def print_info(self):
-        print(f"Current plant: {self._name} ({self.get_heigth()}cm,"
-              f" {self.get_age()} days)")
+        print(
+            f"Current plant: {self._name} ({self.get_heigth()}cm,"
+            f" {self.get_age()} days)"
+        )
+
 
 def main():
     print("=== Garden Security System ===")
@@ -40,6 +45,7 @@ def main():
     rose.set_heigth(-5)
     print()
     rose.print_info()
+
 
 if __name__ == "__main__":
     main()

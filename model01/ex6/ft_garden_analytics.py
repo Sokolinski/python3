@@ -63,9 +63,8 @@ class Garden:
             plant.print_info()
 
         plants_count = len(self.plants)
-        print(
-            f"\nPlants added: {plants_count}, Total growth:"
-            f"{self.total_grow}cm")
+        print(f"\nPlants added: {plants_count}, Total growth:"
+              f"{self.total_grow}cm")
 
         reg = flower = prize = 0
         for plant in self.plants:
@@ -77,11 +76,11 @@ class Garden:
                 prize += 1
         print(
             f"Plant types: {reg} regular, {flower} flowering, {prize} prize"
-            "flowers"
+            f"flowers"
         )
 
 
-class GardenManager():
+class GardenManager:
 
     @staticmethod
     def is_valid_height(height):
@@ -123,9 +122,11 @@ def main():
         garden.garden_report()
         print("---")
 
-    valid_heights = all(GardenManager.is_valid_height(plant.height)
-                        for garden in manager.gardens for plant
-                        in garden.plants)
+    valid_heights = all(
+        GardenManager.is_valid_height(plant.height)
+        for garden in manager.gardens
+        for plant in garden.plants
+    )
     print(f"Height validation test: {valid_heights}")
 
     scores = {}
@@ -134,8 +135,10 @@ def main():
         score += sum(getattr(plant, "prize_point", 0)
                      for plant in garden.plants)
         scores[garden.garden_owner] = score
-    print("Garden scores - " +
-          ", ".join(f"{name}: {score}" for name, score in scores.items()))
+    print(
+        "Garden scores - "
+        + ", ".join(f"{name}: {score}" for name, score in scores.items())
+    )
 
     print(f"Total gardens managed: {len(manager.gardens)}")
 
