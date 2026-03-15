@@ -10,14 +10,14 @@ class WaterError(GardenError):
     pass
 
 
-def test_eror(plant_name, watter_level, plant_status):
+def test_eror(plant_name: str, watter_level: int, plant_status: str) -> None:
     if plant_status == "wilting":
         raise PlantError(f"The {plant_name} plant is wilting!")
     elif watter_level < 5:
         raise WaterError("Not enough water in the tank")
 
 
-def main():
+def main() -> None:
     print("=== Custom Garden Errors Demo ===\n")
 
     try:

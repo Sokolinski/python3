@@ -1,4 +1,4 @@
-def water_plants(plant_list):
+def water_plants(plant_list: list[str | None]) -> None:
     is_successful = True
     print("Opening watering system")
     try:
@@ -15,7 +15,7 @@ def water_plants(plant_list):
             print("Watering completed successfully!")
 
 
-def test_watering_system():
+def test_watering_system() -> None:
     good_list = ["tomato", "lettuce", "carrots"]
     error_list = ["tomato", None]
     print("=== Garden Water System ===\n")

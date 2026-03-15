@@ -1,4 +1,4 @@
-def garden_operations(mode):
+def garden_operations(mode: str) -> None:
     if mode == "value":
         int("abc")
     elif mode == "division":
@@ -10,7 +10,7 @@ def garden_operations(mode):
         dct["missing plant"]
 
 
-def test_error_types():
+def test_error_types() -> None:
     print("=== Garden Error Types Demo ===")
     print()
 
@@ -36,7 +36,7 @@ def test_error_types():
     print("All error types tested succesfully!")
 
 
-def main():
+def main() -> None:
     test_error_types()
 
 

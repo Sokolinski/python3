@@ -65,7 +65,7 @@ def main():
     tree1 = Tree("Oak", 500, 1825, 50)
     tree2 = Tree("Bamboo", 250, 200, 5)
     vege1 = Vegetable("Tomato", 80, 90, "C", "summer")
-    vege2 = Vegetable("Cucumber", 70, 70, "K", "warm-season")
+    vege2 = Vegetable("Cucumber", 70, 70, "K", "warm")
 
     print("=== Garden Plant Types ===")
     print()
