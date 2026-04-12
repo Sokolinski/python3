@@ -3,12 +3,13 @@ import sys
 
 def main() -> None:
     print("=== Command Quest ===")
+    program_name = sys.argv[0].split("/")[-1]
+    print(f"Program name: {program_name}")
     argv_len = len(sys.argv)
     if argv_len == 1:
         print("No arguments provided!")
-    print(f"Program name: {sys.argv[0]}")
-    if argv_len > 1:
-        print(f"Arguments received: {argv_len-1}")
+    else:
+        print(f"Arguments received: {argv_len - 1}")
         for i in range(1, argv_len):
             print(f"Argument {i}: {sys.argv[i]}")
 

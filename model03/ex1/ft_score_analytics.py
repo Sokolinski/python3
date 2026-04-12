@@ -3,18 +3,24 @@ import sys
 
 def main() -> None:
     print("=== Player Score Analytics ===")
-    argv = sys.argv
-    if len(argv) == 1:
-        print("No scores provided. Usage: python3 ft_score_analytics.py "
-              "<score1> <score2> ...")
-        return
-    try:
-        scores = [int(arg) for arg in argv[1:]]
-    except ValueError:
-        print("Invalid input: all arguments must be integers")
+
+    scores: list[int] = []
+
+    for arg in sys.argv[1:]:
+        try:
+            score = int(arg)
+            scores.append(score)
+        except ValueError:
+            print(f"Invalid parameter: '{arg}'")
+
+    if not scores:
+        print(
+            "No scores provided. Usage: python3 ft_score_analytics.py "
+            "<score1> <score2> ..."
+        )
         return
 
-    print(f"Scores processed: {argv[1:]}")
+    print(f"Scores processed: {scores}")
     print(f"Total players: {len(scores)}")
     print(f"Total score: {sum(scores)}")
     print(f"Average score: {sum(scores) / len(scores)}")
