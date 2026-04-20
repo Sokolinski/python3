@@ -1,24 +1,26 @@
-def main() -> None:
-    print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
-    print("Accessing Storage Vault: ancient_fragment.txt")
+import sys
+import typing
 
-    try:
-        storage_vault = open("ancient_fragment.txt", "r")
-    except (FileNotFoundError, PermissionError) as e:
-        print(f"{e}")
+
+def main() -> None:
+    if len(sys.argv) != 2:
+        print("Usage: ft_ancient_text.py <file>")
         return
 
-    print("Connection established...")
-    print("RECOVERED DATA:")
-    try:
-        recovered_data = storage_vault.read()
-        print(recovered_data)
-    except FileNotFoundError as e:
-        print(f"{e}")
-    finally:
-        storage_vault.close()
+    filename = sys.argv[1]
+    print("=== Cyber Archives Recovery ===")
+    print(f"Accessing file '{filename}'")
 
-    print("Data recovery complete. Storage unit disconnected.")
+    try:
+        file: typing.IO[str] = open(filename, 'r')
+        content = file.read()
+        print("---")
+        print(content.rstrip('\n'))
+        print("---")
+        file.close()
+        print(f"File '{filename}' closed.")
+    except Exception as e:
+        print(f"Error opening file '{filename}': {e}")
 
 
 if __name__ == "__main__":

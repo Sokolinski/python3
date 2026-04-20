@@ -27,18 +27,15 @@ def consume_event(
 def main() -> None:
     print("=== Game Data Stream Processor ===")
 
-    # Generate and display 1000 events
     event_gen = gen_event()
     for i in range(1000):
         player, action = next(event_gen)
         print(f"Event {i}: Player {player} did action {action}")
 
-    # Create a list of 10 events
     event_gen = gen_event()
     event_list = [next(event_gen) for _ in range(10)]
     print(f"\nBuilt list of 10 events: {event_list}")
 
-    # Consume events from the list
     for event in consume_event(event_list):
         print(f"Got event from list: {event}")
         print(f"Remains in list: {event_list}")

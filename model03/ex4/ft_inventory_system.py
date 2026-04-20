@@ -47,18 +47,15 @@ def main() -> None:
     total_quantity = sum(inventory.values())
     print(f"Total quantity of the {len(inventory)} items: {total_quantity}")
 
-    # Percentages
     for item, quantity in inventory.items():
         percentage = (quantity / total_quantity) * 100
         print(f"Item {item} represents {percentage:.1f}%")
 
-    # Most abundant (first in case of tie)
     most_abundant = order_of_appearance[0]
     for item in order_of_appearance:
         if inventory[item] > inventory[most_abundant]:
             most_abundant = item
 
-    # Least abundant (first in case of tie)
     least_abundant = order_of_appearance[0]
     for item in order_of_appearance:
         if inventory[item] < inventory[least_abundant]:
@@ -73,7 +70,6 @@ def main() -> None:
         f"with quantity {inventory[least_abundant]}"
     )
 
-    # Add new item
     inventory["magic_item"] = 1
     print(f"Updated inventory: {inventory}")
 

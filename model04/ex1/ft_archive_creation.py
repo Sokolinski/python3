@@ -1,25 +1,47 @@
+import sys
+import typing
+
+
 def main() -> None:
-    print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===")
-    print("Initializing new storage unit: new_discovery.txt")
+    if len(sys.argv) != 2:
+        print("Usage: ft_archive_creation.py <file>")
+        return
 
-    archive_file = open("new_discovery.txt", "w")
-    print("Storage unit created successfully...")
-    print("Inscribing preservation data...")
+    filename = sys.argv[1]
+    print("=== Cyber Archives Recovery & Preservation ===")
+    print(f"Accessing file '{filename}'")
 
-    entry_1 = "[ENTRY 001] New quantum algorithm discovered"
-    entry_2 = "[ENTRY 002] Efficiency increased by 347%"
-    entry_3 = "[ENTRY 003] Archived by Data Archivist trainee"
+    try:
+        file: typing.IO[str] = open(filename, 'r')
+        content = file.read()
+        print("---")
+        print(content, end='')
+        print("---")
+        file.close()
+        print(f"File '{filename}' closed.")
+    except Exception as e:
+        print(f"Error opening file '{filename}': {e}")
+        return
 
-    archive_file.write(entry_1 + "\n")
-    archive_file.write(entry_2 + "\n")
-    archive_file.write(entry_3 + "\n")
-    archive_file.close()
+    lines = content.splitlines()
+    transformed = '\n'.join(line + '#' for line in lines) + '\n'
+    print("Transform data:")
+    print("---")
+    print(transformed, end='')
+    print("---")
 
-    print(entry_1)
-    print(entry_2)
-    print(entry_3)
-    print("Data inscription complete. Storage unit sealed.")
-    print("Archive 'new_discovery.txt' ready for long-term preservation.")
+    new_filename = input("Enter new file name (or empty): ")
+    if new_filename.strip():
+        try:
+            f = open(new_filename, 'w')
+            f.write(transformed)
+            f.close()
+            print(f"Saving data to '{new_filename}'")
+            print(f"Data saved in file '{new_filename}'.")
+        except Exception as e:
+            print(f"Error saving to '{new_filename}': {e}")
+    else:
+        print("Not saving data.")
 
 
 if __name__ == "__main__":
